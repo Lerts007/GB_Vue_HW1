@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="bind-attribute">
+      <span v-bind:title="message">
+        Наведи на меня курсор на пару секунд, чтобы увидеть динамически
+        связанное значение title!
+      </span>
+    </div>
+    <script>
+      const AttributeBinding = {
+        data() {
+          return {
+            message: "Страница загружена " + new Date().toLocaleString(),
+          };
+        },
+      };
+
+      Vue.createApp(AttributeBinding).mount("#bind-attribute");
+    </script>
+  </body>
+</html>

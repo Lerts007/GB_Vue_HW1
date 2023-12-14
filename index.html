@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      button,
+      li {
+        font-size: 24px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="reversButton">{{ textBtn }}</button>
+      <br />
+      <br />
+
+      <button @click="addNewTextLi">Добавить</button>
+      <ul class="addHere" @click="removeTextLi($event)"></ul>
+    </div>
+
+    <script>
+      const App = {
+        data() {
+          return {
+            textBtn: 'Перевернуть',
+          };
+        },
+        methods: {
+          reversButton() {
+            this.textBtn = this.textBtn.split('').reverse().join('');
+          },
+          addNewTextLi() {
+            const addHere = document.querySelector('.addHere');
+            console.log(addHere);
+            const li = document.createElement('li');
+            li.textContent = 'Новый элемент списка';
+            addHere.appendChild(li);
+          },
+          removeTextLi(event) {
+            event.target.remove();
+          },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
